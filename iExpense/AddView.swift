@@ -30,7 +30,7 @@ struct AddView: View {
     
     var expenses: Expenses
     
-    let types = ["Business", "Personal"]
+    let types = ["Business", "Personal", "Misc"]
     
     var body: some View {
         NavigationStack {
@@ -46,8 +46,8 @@ struct AddView: View {
                 HStack {
                     Picker("Amount", selection: $chosenLocale) {
                         ForEach(locales, id: \.self) { locale in
-                            if let cc = locale.currency?.identifier, let sym = locale.currencySymbol {
-                                Text("\(cc) \(sym)").tag(locale)
+                            if let code = locale.currency?.identifier, let symbol = locale.currencySymbol {
+                                Text("\(code) \(symbol)").tag(locale)
                             }
                         }
                     }

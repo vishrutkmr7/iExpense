@@ -1,9 +1,9 @@
-//
-//  ContentView.swift
-//  iExpense
-//
-//  Created by Vishrut Jha on 5/21/24.
-//
+    //
+    //  ContentView.swift
+    //  iExpense
+    //
+    //  Created by Vishrut Jha on 5/21/24.
+    //
 
 import SwiftUI
 
@@ -41,26 +41,23 @@ struct ContentView: View {
     @State private var expenses = Expenses()
     @State private var showingAddExpense = false
     
+    var groupedExpenses: [String: [ExpenseItem]] {
+        Dictionary(grouping: expenses.items, by: { $0.type })
+    }
+    
     var body: some View {
         NavigationStack {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            
-                            Text(item.type)
-                                .font(.subheadline)
+                ForEach(groupedExpenses.keys.sorted(), id: \.self) { type in
+                    Section(header: Text("\(type) Expenses")) {
+                        ForEach(groupedExpenses[type] ?? []) { item in
+                            ExpenseRow(item: item)
                         }
-                        
-                        Spacer()
-                        
-                        Text(formattedAmount(for: item))
-                            .foregroundColor(item.amount < 10 ? .green : (item.amount < 100 ? .orange : .red))
+                        .onDelete { indexSet in
+                            removeItems(at: indexSet, from: type)
+                        }
                     }
                 }
-                .onDelete(perform: removeItems)
             }
             .navigationTitle("iExpense")
             .toolbar {
@@ -74,8 +71,34 @@ struct ContentView: View {
         }
     }
     
-    func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
+    func removeItems(at offsets: IndexSet, from type: String) {
+        let filteredItems = expenses.items.filter { $0.type == type }
+        for index in offsets {
+            if let itemIndex = expenses.items.firstIndex(where: { $0.id == filteredItems[index].id }) {
+                expenses.items.remove(at: itemIndex)
+            }
+        }
+    }
+}
+
+struct ExpenseRow: View {
+    let item: ExpenseItem
+    
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(item.name)
+                    .font(.headline)
+                
+                Text(item.type)
+                    .font(.subheadline)
+            }
+            
+            Spacer()
+            
+            Text(formattedAmount(for: item)) // from Locales
+                .foregroundColor(item.amount < 10 ? .green : (item.amount < 100 ? .orange : .red))
+        }
     }
 }
 
