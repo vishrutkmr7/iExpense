@@ -12,6 +12,7 @@ struct ExpenseItem: Identifiable, Codable {
     let name: String
     let type: String
     let amount: Double
+    var currency: String
 }
 
 @Observable
@@ -38,7 +39,6 @@ class Expenses {
 
 struct ContentView: View {
     @State private var expenses = Expenses()
-    
     @State private var showingAddExpense = false
     
     var body: some View {
@@ -56,7 +56,8 @@ struct ContentView: View {
                         
                         Spacer()
                         
-                        Text(item.amount, format: .currency(code: "USD"))
+                        Text(formattedAmount(for: item))
+                            .foregroundColor(item.amount < 10 ? .green : (item.amount < 100 ? .orange : .red))
                     }
                 }
                 .onDelete(perform: removeItems)

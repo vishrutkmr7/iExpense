@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6D2F8EA02C0998E900355251 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F8E9F2C0998E900355251 /* AddView.swift */; };
+		6D2F8EA32C09A61C00355251 /* CurrencyField in Frameworks */ = {isa = PBXBuildFile; productRef = 6D2F8EA22C09A61C00355251 /* CurrencyField */; };
+		6D2F8EA52C09AC8400355251 /* Locales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F8EA42C09AC8400355251 /* Locales.swift */; };
 		6D3E2D6F2BFC655100A5DD73 /* iExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E2D6E2BFC655100A5DD73 /* iExpenseApp.swift */; };
 		6D3E2D712BFC655100A5DD73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E2D702BFC655100A5DD73 /* ContentView.swift */; };
 		6D3E2D732BFC655200A5DD73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D3E2D722BFC655200A5DD73 /* Assets.xcassets */; };
@@ -16,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		6D2F8E9F2C0998E900355251 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		6D2F8EA42C09AC8400355251 /* Locales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locales.swift; sourceTree = "<group>"; };
 		6D3E2D6B2BFC655100A5DD73 /* iExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D3E2D6E2BFC655100A5DD73 /* iExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpenseApp.swift; sourceTree = "<group>"; };
 		6D3E2D702BFC655100A5DD73 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -28,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D2F8EA32C09A61C00355251 /* CurrencyField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +59,7 @@
 			children = (
 				6D3E2D6E2BFC655100A5DD73 /* iExpenseApp.swift */,
 				6D2F8E9F2C0998E900355251 /* AddView.swift */,
+				6D2F8EA42C09AC8400355251 /* Locales.swift */,
 				6D3E2D702BFC655100A5DD73 /* ContentView.swift */,
 				6D3E2D722BFC655200A5DD73 /* Assets.xcassets */,
 				6D3E2D742BFC655200A5DD73 /* Preview Content */,
@@ -86,6 +91,9 @@
 			dependencies = (
 			);
 			name = iExpense;
+			packageProductDependencies = (
+				6D2F8EA22C09A61C00355251 /* CurrencyField */,
+			);
 			productName = iExpense;
 			productReference = 6D3E2D6B2BFC655100A5DD73 /* iExpense.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 6D3E2D622BFC655100A5DD73;
+			packageReferences = (
+				6D2F8EA12C09A61C00355251 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */,
+			);
 			productRefGroup = 6D3E2D6C2BFC655100A5DD73 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -143,6 +154,7 @@
 				6D3E2D712BFC655100A5DD73 /* ContentView.swift in Sources */,
 				6D3E2D6F2BFC655100A5DD73 /* iExpenseApp.swift in Sources */,
 				6D2F8EA02C0998E900355251 /* AddView.swift in Sources */,
+				6D2F8EA52C09AC8400355251 /* Locales.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +360,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6D2F8EA12C09A61C00355251 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jtrinc/swiftui-currency-field";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6D2F8EA22C09A61C00355251 /* CurrencyField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D2F8EA12C09A61C00355251 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */;
+			productName = CurrencyField;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6D3E2D632BFC655100A5DD73 /* Project object */;
 }
